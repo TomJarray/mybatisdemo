@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.zhongsou.mybatis.dao.StudentDao">
+	<select id="findById" parameterType="int" resultType="Student" >
+		select * from student where student_id = #{id}
+	</select>
+	
+	<insert id="insert" parameterType="Student">
+		insert into student
+			(student_name, student_age, student_gender)
+		values
+			(#{student_name}, #{student_age}, #{student_gender})
+	</insert>
+	
+	<update id="update" parameterType="Student">
+		update student
+		<set>
+			<if test="'student_name' in columns">student_name = #{student_name},</if>
+			<if test="'student_age' in columns">student_age = #{student_age},</if>
+			<if test="'student_gender' in columns">student_gender = #{student_gender}</if>
+		</set>
+		where student_id = #{student_id}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from student where student_id = #{id}
+	</delete>
+</mapper>
