@@ -58,11 +58,11 @@ public class StudentDaoTest extends BaseTest{
 			Student student = POFactory.getPoInstance(Student.class);
 			
 			student.setStudent_id(5L);
-//			student.setStudent_name("dddd");
-			student.setStudent_age(7);
+			student.setStudent_name("dddd");
+			student.setStudent_age(null);
 			//student.setStudent_gender(1);
 
-			studentDao.update(student.getSetterMap());
+			studentDao.update(student);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

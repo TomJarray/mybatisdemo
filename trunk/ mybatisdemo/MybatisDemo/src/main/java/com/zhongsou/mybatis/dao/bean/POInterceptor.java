@@ -11,7 +11,7 @@ import org.apache.commons.lang.StringUtils;
 /**
  * <pre>
  * set方法拦截器
- * 拦截DataObject中所有的set方法,把set的属性放入到map中
+ * 拦截PO中所有的set方法,把set的属性放入到map中
  * </pre>
  * 
  * @author Maurice Jin
@@ -28,14 +28,12 @@ public class POInterceptor implements MethodInterceptor {
 		if (method.getName().startsWith(SET_METHOD)) {
 		    if (obj instanceof PO) {
 				PO po = (PO) obj;
-				po.initSetterMap();
+				po.initUpdatedSetp();
 				String attribute = StringUtils.substring(method.getName(),
 					SET_METHOD.length());
 				attribute = StringUtils.uncapitalize(attribute);
 				if (args != null && args.length == 1) {
-					po.getSetterMap().put(attribute, args[0]);
-					List<String> columns = (List<String>)po.getSetterMap().get("columns");
-					columns.add(attribute);
+					po.getUpdatedSet().add(attribute);
 				}
 		    }
 		}
