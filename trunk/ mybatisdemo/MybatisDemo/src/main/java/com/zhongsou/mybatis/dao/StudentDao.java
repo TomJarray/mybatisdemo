@@ -1,7 +1,5 @@
 package com.zhongsou.mybatis.dao;
 
-import java.util.Map;
-
 import com.zhongsou.mybatis.dao.bean.Student;
 
 public interface StudentDao {
@@ -9,5 +7,5 @@ public interface StudentDao {
 	
 	void insert(Student student);
 	void update(Student student);
-	void delete(Long id);
+	void delete(Long student_id);
 }

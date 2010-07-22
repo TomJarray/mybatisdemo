@@ -26,6 +26,6 @@
 	</update>
 	
 	<delete id="delete" parameterType="int">
-		delete from student where student_id = #{id}
+		delete from student where student_id = #{student_id}
 	</delete>
 </mapper>

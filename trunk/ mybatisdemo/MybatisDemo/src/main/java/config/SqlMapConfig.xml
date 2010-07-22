@@ -7,9 +7,11 @@
 
 	<typeAliases>
 		<typeAlias type="com.zhongsou.mybatis.dao.bean.Student" alias="Student" />
+		<typeAlias type="com.zhongsou.mybatis.dao.bean.Score" alias="Score" />
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="com/zhongsou/mybatis/dao/mapper/StudentMapper.xml"/>
+		<mapper resource="com/zhongsou/mybatis/dao/mapper/ScoreMapper.xml"/>
 	</mappers>
 </configuration>

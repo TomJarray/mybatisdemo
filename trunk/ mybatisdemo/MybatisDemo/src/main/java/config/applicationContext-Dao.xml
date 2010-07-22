@@ -10,4 +10,9 @@
 	<property name="mapperInterface" value="com.zhongsou.mybatis.dao.StudentDao"></property>
 </bean>
 
+<bean id="scoreDao" class="org.springframework.orm.ibatis3.support.MapperFactoryBean">
+	<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	<property name="mapperInterface" value="com.zhongsou.mybatis.dao.ScoreDao"></property>
+</bean>
+
 </beans>
