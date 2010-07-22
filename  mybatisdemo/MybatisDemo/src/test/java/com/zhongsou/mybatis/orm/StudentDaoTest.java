@@ -1,10 +1,5 @@
 package com.zhongsou.mybatis.orm;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import junit.framework.Assert;
 
 import org.junit.Before;
@@ -26,7 +21,7 @@ public class StudentDaoTest extends BaseTest{
 	
 	@Test
 	public void findById() {
-		Long id = 1L;
+		Long id = 5L;
 		try
 		{
 			Student student = studentDao.findById(id);
@@ -68,31 +63,11 @@ public class StudentDaoTest extends BaseTest{
 		}
 	}
 	
-//	@Test
-//	public void updatebymap() {
-//		try {
-//			Map<String, Object> map = new HashMap<String, Object>();
-//			map.put("student_id", 5);
-//			map.put("student_name", "w");
-//			map.put("student_age", null);
-////			map.put("ccc", "student_age, student_id");
-//			List<String> list = new ArrayList<String>();
-//			list.add("student_id");
-//			list.add("student_name");
-//			list.add("student_age");
-//			map.put("ccc", list);
-//			
-//			studentDao.updatebymap(map);
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
-	
 	@Test
 	public void delete() {
 		try
 		{
-			studentDao.delete(2L);
+			studentDao.delete(6L);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
