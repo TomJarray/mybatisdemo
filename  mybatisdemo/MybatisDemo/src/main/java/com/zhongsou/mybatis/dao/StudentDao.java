@@ -8,6 +8,6 @@ public interface StudentDao {
 	Student findById(Long id);
 	
 	void insert(Student student);
-	void update(Map<String, Object> studentMap);
+	void update(Student student);
 	void delete(Long id);
 }
