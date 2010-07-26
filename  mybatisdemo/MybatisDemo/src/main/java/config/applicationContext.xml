@@ -21,6 +21,10 @@
 		<property name="defaultAutoCommit" value="${jdbc.mysql01.defaultAutoCommit}"/>
 	</bean>
 	
+	<bean id="simpleJdbcTemplateMysql01" class="org.springframework.jdbc.core.simple.SimpleJdbcTemplate">
+		<constructor-arg ref="dataSourceMysql01"/>
+	</bean>
+	
 	 <bean id="sqlSessionFactory"  class="org.springframework.orm.ibatis3.SqlSessionFactoryBean">
 		<property name="configLocation" value="config/SqlMapConfig.xml"></property>
 		<property name="dataSource" ref="dataSourceMysql01"></property>

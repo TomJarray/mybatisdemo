@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class LargeJdbcDao {
+public class LobJdbcDao {
 	private static final String driverClassName = "com.mysql.jdbc.Driver";
 	private static final String url = "jdbc:mysql://localhost:3306/mybatis?characterEncoding=UTF8";
 	private static final String username = "root";
@@ -44,11 +44,11 @@ public class LargeJdbcDao {
 			PreparedStatement statement = conn.prepareStatement(
 					"insert into lob(lob_blob, lob_text) values(?, ?)");
 			
-			File blobFile = new File(LargeJdbcDao.class.getResource("1.gif").getFile());
+			File blobFile = new File(LobJdbcDao.class.getResource("1.gif").getFile());
 			InputStream blobStream = new FileInputStream(blobFile);
 			statement.setBinaryStream(1, blobStream, blobFile.length());
 			
-			File textFile = new File(LargeJdbcDao.class.getResource("1.txt").getFile());
+			File textFile = new File(LobJdbcDao.class.getResource("1.txt").getFile());
 			InputStream textStream = new FileInputStream(textFile);
 			InputStreamReader textReader = new InputStreamReader(textStream);
 			statement.setCharacterStream(2, textReader, textFile.length());
