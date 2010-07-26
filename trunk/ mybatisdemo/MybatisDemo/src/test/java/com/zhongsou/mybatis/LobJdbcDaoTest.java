@@ -2,15 +2,15 @@ package com.zhongsou.mybatis;
 
 import org.junit.Test;
 
-public class LargeJdbcDaoTest {
+public class LobJdbcDaoTest {
 
 	@Test
 	public void insertlob() {
-		LargeJdbcDao.insertLob();
+		LobJdbcDao.insertLob();
 	}
 	
 	@Test
 	public void selectlob() {
-		LargeJdbcDao.selectLob();
+		LobJdbcDao.selectLob();
 	}
 }
