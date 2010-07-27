@@ -4,6 +4,10 @@ import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import com.zhongsou.mybatis.BaseTest;
 import com.zhongsou.mybatis.dao.StudentDao;
@@ -12,11 +16,13 @@ import com.zhongsou.mybatis.dao.bean.Student;
 
 public class StudentDaoTest extends BaseTest{
 	private StudentDao studentDao;
+	private DataSourceTransactionManager dataSourceTransactionManager;
 	
 	@Before
 	public void init() throws Exception {
 		super.init();
 		studentDao = (StudentDao)ctx.getBean("studentDao");
+		dataSourceTransactionManager = (DataSourceTransactionManager)ctx.getBean("transactionManagerMysql01");
 	}
 	
 	@Test
@@ -49,15 +55,26 @@ public class StudentDaoTest extends BaseTest{
 	public void update() {
 		try
 		{
-			//Student student = studentDao.findById(5L);
+			Student student = studentDao.findById(1L);
+			student.setStudent_name("dddd");
+			studentDao.update(student);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void partialupdate() {
+		try
+		{
 			Student student = POFactory.getPoInstance(Student.class);
 			
-			student.setStudent_id(5L);
+			student.setStudent_id(3L);
 			student.setStudent_name("dddd");
 			student.setStudent_age(null);
 			//student.setStudent_gender(1);
 
-			studentDao.update(student);
+			studentDao.partialupdate(student);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -70,6 +87,27 @@ public class StudentDaoTest extends BaseTest{
 			studentDao.delete(6L);
 		} catch(Exception e) {
 			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void trans() {
+		DefaultTransactionDefinition def = new DefaultTransactionDefinition();
+		def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+		TransactionStatus status = dataSourceTransactionManager.getTransaction(def);
+		
+		try {
+			Student student = POFactory.getPoInstance(Student.class);
+			student.setStudent_id(1L);
+			student.setStudent_age(55);
+			studentDao.update(student);
+			
+			student.setStudent_gender(0);
+			studentDao.update(student);
+			
+			dataSourceTransactionManager.commit(status);
+		} catch(Exception e) {
+			dataSourceTransactionManager.rollback(status);
 		}
 	}
 

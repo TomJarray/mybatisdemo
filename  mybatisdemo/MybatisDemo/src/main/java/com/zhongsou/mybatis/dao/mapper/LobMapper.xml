@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.zhongsou.mybatis.dao.LobDao">
+	
+	<resultMap type="Lob" id="lobResult">
+		<result property="lob_blob" column="lob_blob" typeHandler="BlobTypeHandler"/>  
+		<result property="lob_text" column="lob_text" typeHandler="ClobTypeHandler" />
+	</resultMap>
+
+	<select id="findById" parameterType="int" resultMap="lobResult" >
+		select * from lob where lob_id = #{id}
+	</select>
+	
+	<insert id="insert" parameterType="Lob">
+		insert into lob
+			(lob_blob, lob_text)
+		values
+			(#{lob_blob}, #{lob_text})
+	</insert>
+	
+	<update id="update" parameterType="Lob">
+		update lob set
+			lob_blob = #{lob_blob},
+			lob_text = #{lob_text}
+		where lob_id = #{lob_id}
+	</update>
+	
+	<update id="partialupdate" parameterType="Lob">
+		update lob
+		<set>
+			<if test="'lob_blob' in updatedSet">lob_blob = #{lob_blob},</if>
+			<if test="'lob_text' in updatedSet">lob_text = #{lob_text}</if>
+		</set>
+		where lob_id = #{lob_id}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from lob where lob_id = #{id}
+	</delete>
+</mapper>

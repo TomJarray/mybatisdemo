@@ -16,6 +16,14 @@
 	</insert>
 	
 	<update id="update" parameterType="Student">
+		update student set
+			student_name = #{student_name},
+			student_age = #{student_age},
+			student_gender = #{student_gender}
+		where student_id = #{student_id}
+	</update>
+	
+	<update id="partialupdate" parameterType="Student">
 		update student
 		<set>
 			<if test="'student_name' in updatedSet">student_name = #{student_name},</if>

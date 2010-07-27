@@ -12,6 +12,7 @@ public class LobSpringDao {
 
 	public void setSimpleJdbcTemplate(SimpleJdbcTemplate simpleJdbcTemplate) {
 		this.simpleJdbcTemplate = simpleJdbcTemplate;
+		
 	}
 	
 	

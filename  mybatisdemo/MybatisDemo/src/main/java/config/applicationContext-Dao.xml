@@ -15,4 +15,9 @@
 	<property name="mapperInterface" value="com.zhongsou.mybatis.dao.ScoreDao"></property>
 </bean>
 
+<bean id="lobDao" class="org.springframework.orm.ibatis3.support.MapperFactoryBean">
+	<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	<property name="mapperInterface" value="com.zhongsou.mybatis.dao.LobDao"></property>
+</bean>
+
 </beans>
