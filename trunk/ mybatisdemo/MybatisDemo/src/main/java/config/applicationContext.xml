@@ -21,6 +21,10 @@
 		<property name="defaultAutoCommit" value="${jdbc.mysql01.defaultAutoCommit}"/>
 	</bean>
 	
+	<bean id="transactionManagerMysql01" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref ="dataSourceMysql01"/>
+    </bean>
+	
 	<bean id="simpleJdbcTemplateMysql01" class="org.springframework.jdbc.core.simple.SimpleJdbcTemplate">
 		<constructor-arg ref="dataSourceMysql01"/>
 	</bean>

@@ -7,5 +7,6 @@ public interface StudentDao {
 	
 	void insert(Student student);
 	void update(Student student);
+	void partialupdate(Student student);
 	void delete(Long student_id);
 }

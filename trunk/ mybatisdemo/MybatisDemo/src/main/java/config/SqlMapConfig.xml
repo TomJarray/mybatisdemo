@@ -8,10 +8,14 @@
 	<typeAliases>
 		<typeAlias type="com.zhongsou.mybatis.dao.bean.Student" alias="Student" />
 		<typeAlias type="com.zhongsou.mybatis.dao.bean.Score" alias="Score" />
+		<typeAlias type="com.zhongsou.mybatis.dao.bean.Lob" alias="Lob" />
+		<typeAlias type="org.apache.ibatis.type.BlobTypeHandler" alias="BlobTypeHandler" />
+		<typeAlias type="org.apache.ibatis.type.ClobTypeHandler" alias="ClobTypeHandler" />
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="com/zhongsou/mybatis/dao/mapper/StudentMapper.xml"/>
 		<mapper resource="com/zhongsou/mybatis/dao/mapper/ScoreMapper.xml"/>
+		<mapper resource="com/zhongsou/mybatis/dao/mapper/LobMapper.xml"/>
 	</mappers>
 </configuration>
