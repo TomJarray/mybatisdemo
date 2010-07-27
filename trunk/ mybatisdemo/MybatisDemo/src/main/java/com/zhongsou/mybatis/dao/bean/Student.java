@@ -1,6 +1,7 @@
 package com.zhongsou.mybatis.dao.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Student extends PO implements Serializable {
 	
@@ -10,6 +11,8 @@ public class Student extends PO implements Serializable {
 	private String student_name;
 	private Integer student_age;
 	private Integer student_gender;
+	
+	private List<Score> scores;
 	
 	public Long getStudent_id() {
 		return student_id;
@@ -35,4 +38,13 @@ public class Student extends PO implements Serializable {
 	public void setStudent_gender(Integer studentGender) {
 		student_gender = studentGender;
 	}
+	
+	
+	public List<Score> getScores() {
+		return scores;
+	}
+	public void setScores(List<Score> scores) {
+		this.scores = scores;
+	}
+	
 }
