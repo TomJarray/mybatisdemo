@@ -8,7 +8,7 @@ import com.zhongsou.mybatis.dao.ScoreDao;
 import com.zhongsou.mybatis.dao.bean.POFactory;
 import com.zhongsou.mybatis.dao.bean.Score;
 
-public class ScoreDaoTest extends BaseTest {
+public class ScoreDaoTest111 extends BaseTest {
 private ScoreDao scoreDao;
 	
 	@Before
@@ -93,9 +93,9 @@ private ScoreDao scoreDao;
 			score.setStudent_id(1L);
 			score.setCourse_id(1L);
 			score.setScore(0f);
-			score.setDesc1(s + s);
-			score.setDesc2(s + s);
-			score.setDesc3(s + s);
+//			score.setDesc1(s + s);
+//			score.setDesc2(s + s);
+//			score.setDesc3(s + s);
 
 			scoreDao.update(score);
 		} catch(Exception e) {

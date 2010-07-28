@@ -1,5 +1,7 @@
 package com.zhongsou.mybatis.orm;
 
+import java.util.List;
+
 import junit.framework.Assert;
 
 import org.junit.Before;
@@ -12,6 +14,7 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
 import com.zhongsou.mybatis.BaseTest;
 import com.zhongsou.mybatis.dao.StudentDao;
 import com.zhongsou.mybatis.dao.bean.POFactory;
+import com.zhongsou.mybatis.dao.bean.Score;
 import com.zhongsou.mybatis.dao.bean.Student;
 
 public class StudentDaoTest extends BaseTest{
@@ -89,6 +92,27 @@ public class StudentDaoTest extends BaseTest{
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void getStudentScores1() {
+		try {
+			List<Score> scores = studentDao.getStudentScores1();
+			String string = "Hello World";
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void getStudentScores2() {
+		try {
+			List<Student> students = studentDao.getStudentScores2();
+			String string = "Hello World";
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 	@Test
 	public void trans() {

@@ -1,5 +1,8 @@
 package com.zhongsou.mybatis.dao;
 
+import java.util.List;
+
+import com.zhongsou.mybatis.dao.bean.Score;
 import com.zhongsou.mybatis.dao.bean.Student;
 
 public interface StudentDao {
@@ -9,4 +12,8 @@ public interface StudentDao {
 	void update(Student student);
 	void partialupdate(Student student);
 	void delete(Long student_id);
+	
+	List<Score> getStudentScores1();
+	List<Student> getStudentScores2();
+	
 }

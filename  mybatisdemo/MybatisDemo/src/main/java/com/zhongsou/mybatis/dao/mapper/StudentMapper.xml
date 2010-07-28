@@ -36,4 +36,66 @@
 	<delete id="delete" parameterType="int">
 		delete from student where student_id = #{student_id}
 	</delete>
+	
+	<resultMap id="studentScoresResult" type="Score" >
+		<result property="student.student_id" column="student_id" />
+		
+	</resultMap>
+	
+	<select id="getStudentScores1" resultMap="studentScoresResult" >
+		select
+			score.*,
+			
+			student.student_id as 'student.student_id',
+			student.student_name as 'student.student_name',
+			student.student_age as 'student.student_age',
+			student.student_gender as 'student.student_gender',
+			
+			course.course_id as 'course.course_id',
+			course.course_name as 'course.course_name',
+			course.course_desc as 'course.course_desc',
+			course.course_type as 'course.course_type'
+			
+		from score 
+		inner join student on score.student_id = student.student_id
+		inner join course on score.course_id = course.course_id 
+	</select>
+	
+	<resultMap type="Student" id="studentScores2Result">
+		<result property="student_id" column="student_student_id"/>
+		<result property="student_name" column="student_student_name"/>
+		<result property="student_age" column="student_student_age"/>
+		<result property="student_gender" column="student_student_gender"/>
+		
+		<collection property="scores" ofType="Score">
+			<id property="score_id" column="score_score_id"/>
+			<result property="score" column="score_score"/>
+			
+			<association property="course" column="course_course_id" javaType="Course">
+				<id property="course_id" column="course_course_id"/>
+				<result property="course_name" column="course_course_name"/>
+				<result property="course_desc" column="course_course_desc"/>
+				<result property="course_type" column="course_course_type"/>
+			</association>
+		</collection>
+	</resultMap>
+	<select id="getStudentScores2" resultMap="studentScores2Result" >
+		select
+			student.student_id as 'student_student_id',
+			student.student_name as 'student_student_name',
+			student.student_age as 'student_student_age',
+			student.student_gender as 'student_student_gender',
+			
+			score.score_id as 'score_score_id',
+			score.score as 'score_score',
+			
+			course.course_id as 'course_course_id',
+			course.course_name as 'course_course_name',
+			course.course_desc as 'course_course_desc',
+			course.course_type as 'course_course_type'
+			
+		from score 
+		inner join student on score.student_id = student.student_id
+		inner join course on score.course_id = course.course_id 
+	</select>
 </mapper>

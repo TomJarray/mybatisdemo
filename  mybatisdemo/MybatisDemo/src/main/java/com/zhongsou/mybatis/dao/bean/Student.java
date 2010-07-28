@@ -1,11 +1,8 @@
 package com.zhongsou.mybatis.dao.bean;
 
-import java.io.Serializable;
 import java.util.List;
 
-public class Student extends PO implements Serializable {
-	
-	private static final long serialVersionUID = -588781893808845833L;
+public class Student extends PO {
 	
 	private Long student_id;
 	private String student_name;

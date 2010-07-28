@@ -12,9 +12,7 @@ import java.util.Set;
  * 
  * @author Maurice Jin
  */
-public class PO implements Serializable {
-
-	private static final long serialVersionUID = 3194709419462743566L;
+public class PO {
 	
 	private Set<String> updatedSet;
 
