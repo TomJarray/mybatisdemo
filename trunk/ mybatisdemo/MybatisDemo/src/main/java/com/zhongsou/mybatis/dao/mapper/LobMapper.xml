@@ -5,12 +5,12 @@
 
 <mapper namespace="com.zhongsou.mybatis.dao.LobDao">
 	
-	<resultMap type="Lob" id="lobResult">
+	<resultMap type="Lob" id="lobMap">
 		<result property="lob_blob" column="lob_blob" typeHandler="BlobTypeHandler"/>  
 		<result property="lob_text" column="lob_text" typeHandler="ClobTypeHandler" />
 	</resultMap>
 
-	<select id="findById" parameterType="int" resultMap="lobResult" >
+	<select id="findById" parameterType="int" resultMap="lobMap" >
 		select * from lob where lob_id = #{id}
 	</select>
 	

@@ -7,7 +7,10 @@
 
 	<typeAliases>
 		<typeAlias type="com.zhongsou.mybatis.dao.bean.Student" alias="Student" />
+		<typeAlias type="com.zhongsou.mybatis.dao.bean.Course" alias="Course" />
+		<typeAlias type="com.zhongsou.mybatis.dao.bean.Teacher" alias="Teacher" />
 		<typeAlias type="com.zhongsou.mybatis.dao.bean.Score" alias="Score" />
+		<typeAlias type="com.zhongsou.mybatis.dao.bean.Schedule" alias="Schedule" />
 		<typeAlias type="com.zhongsou.mybatis.dao.bean.Lob" alias="Lob" />
 		<typeAlias type="org.apache.ibatis.type.BlobTypeHandler" alias="BlobTypeHandler" />
 		<typeAlias type="org.apache.ibatis.type.ClobTypeHandler" alias="ClobTypeHandler" />

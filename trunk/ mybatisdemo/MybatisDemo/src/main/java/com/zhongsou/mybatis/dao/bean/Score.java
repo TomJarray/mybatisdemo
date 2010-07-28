@@ -1,11 +1,7 @@
 package com.zhongsou.mybatis.dao.bean;
 
-import java.io.Serializable;
+public class Score extends PO {
 
-public class Score extends PO implements Serializable{
-
-	private static final long serialVersionUID = -3090696155529216492L;
-	
 	private Long score_id;
 	private Long student_id;
 	private Long course_id;
@@ -38,7 +34,6 @@ public class Score extends PO implements Serializable{
 	public void setScore(Float score) {
 		this.score = score;
 	}
-	
 	
 	public Student getStudent() {
 		return student;

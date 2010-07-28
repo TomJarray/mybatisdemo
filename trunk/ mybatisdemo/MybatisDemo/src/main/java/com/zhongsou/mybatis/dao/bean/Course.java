@@ -3,16 +3,15 @@ package com.zhongsou.mybatis.dao.bean;
 import java.io.Serializable;
 import java.util.List;
 
-public class Course extends PO implements Serializable {
+public class Course extends PO {
 
-	private static final long serialVersionUID = -8775489683304433007L;
-	
 	private Long course_id;
 	private String course_name;
 	private String course_desc;
 	private Integer course_type;
 	
 	private List<Score> scores;
+	private List<Schedule> schedules;
 	
 	public Long getCourse_id() {
 		return course_id;
@@ -39,12 +38,17 @@ public class Course extends PO implements Serializable {
 		this.course_type = course_type;
 	}
 	
-	
 	public List<Score> getScores() {
 		return scores;
 	}
 	public void setScores(List<Score> scores) {
 		this.scores = scores;
+	}
+	public List<Schedule> getSchedules() {
+		return schedules;
+	}
+	public void setSchedules(List<Schedule> schedules) {
+		this.schedules = schedules;
 	}
 	
 }
