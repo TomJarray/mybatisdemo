@@ -227,7 +227,7 @@ public class SqlSessionFactoryBean implements FactoryBean<SqlSessionFactory>, In
      * @throws IllegalAccessException
      * @throws InstantiationException
      */
-    protected SqlSessionFactory buildSqlSessionFactory() throws IOException, IllegalAccessException,
+    public SqlSessionFactory buildSqlSessionFactory() throws IOException, IllegalAccessException,
             InstantiationException {
 
         XMLConfigBuilder xmlConfigBuilder;
