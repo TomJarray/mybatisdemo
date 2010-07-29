@@ -33,5 +33,6 @@
 		<property name="configLocation" value="config/SqlMapConfig.xml"></property>
 		<property name="dataSource" ref="dataSourceMysql01"></property>
     </bean>
+    
 
 </beans>

@@ -12,6 +12,7 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import com.zhongsou.mybatis.BaseTest;
+import com.zhongsou.mybatis.bean.StudentInfo;
 import com.zhongsou.mybatis.dao.StudentDao;
 import com.zhongsou.mybatis.dao.bean.POFactory;
 import com.zhongsou.mybatis.dao.bean.Score;
@@ -113,6 +114,15 @@ public class StudentDaoTest extends BaseTest{
 		}
 	}
 	
+	@Test
+	public void getStudentScores3() {
+		try {
+			List<StudentInfo> students = studentDao.getStudentScores3();
+			String string = "Hello World";
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	@Test
 	public void trans() {

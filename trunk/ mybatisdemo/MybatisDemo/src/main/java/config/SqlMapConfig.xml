@@ -4,6 +4,12 @@
 	"http://ibatis.apache.org/dtd/ibatis-3-config.dtd">
 
 <configuration>
+	<plugins>
+		<!-- 指定数据库分页方言Dialect, 其它方言:OracleDialect,SQLServerDialect,SybaseDialect,DB2Dialect,PostgreSQLDialect,MySQLDialect,DerbyDialect,HSQLDialect-->
+		<plugin interceptor="org.springframework.orm.ibatis3.plugin.OffsetLimitInterceptor">
+			<property name="dialectClass" value="org.springframework.orm.ibatis3.plugin.MySQLDialect"/>
+		</plugin>
+	</plugins>
 
 	<typeAliases>
 		<typeAlias type="com.zhongsou.mybatis.dao.bean.Student" alias="Student" />
@@ -12,6 +18,8 @@
 		<typeAlias type="com.zhongsou.mybatis.dao.bean.Score" alias="Score" />
 		<typeAlias type="com.zhongsou.mybatis.dao.bean.Schedule" alias="Schedule" />
 		<typeAlias type="com.zhongsou.mybatis.dao.bean.Lob" alias="Lob" />
+		<typeAlias type="com.zhongsou.mybatis.bean.StudentInfo" alias="StudentInfo" />
+		
 		<typeAlias type="org.apache.ibatis.type.BlobTypeHandler" alias="BlobTypeHandler" />
 		<typeAlias type="org.apache.ibatis.type.ClobTypeHandler" alias="ClobTypeHandler" />
 	</typeAliases>
