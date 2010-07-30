@@ -20,4 +20,13 @@
 	<property name="mapperInterface" value="com.zhongsou.mybatis.dao.LobDao"></property>
 </bean>
 
+<bean id="teacherDao" class="org.springframework.orm.ibatis3.support.MapperFactoryBean">
+	<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	<property name="mapperInterface" value="com.zhongsou.mybatis.dao.TeacherDao"></property>
+</bean>
+
+<bean id="pageStudentDao" class="com.zhongsou.mybatis.dao.PageStudentDao">
+	<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+</bean>
+
 </beans>
