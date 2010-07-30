@@ -32,6 +32,8 @@
 		<mapper resource="com/zhongsou/mybatis/dao/mapper/StudentMapper.xml"/>
 		<mapper resource="com/zhongsou/mybatis/dao/mapper/ScoreMapper.xml"/>
 		<mapper resource="com/zhongsou/mybatis/dao/mapper/LobMapper.xml"/>
+		<mapper resource="com/zhongsou/mybatis/dao/mapper/TeacherMapper.xml"/>
+		<mapper resource="com/zhongsou/mybatis/dao/mapper/PageStudentMapper.xml"/>
 	</mappers>
 	
 	

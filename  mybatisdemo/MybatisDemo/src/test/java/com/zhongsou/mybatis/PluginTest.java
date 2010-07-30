@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.zhongsou.mybatis.dao.StudentDao;
+import com.zhongsou.mybatis.dao.TeacherDao;
 import com.zhongsou.mybatis.dao.bean.Student;
 
 public class PluginTest extends BaseTest{
@@ -35,8 +36,10 @@ public class PluginTest extends BaseTest{
 	@Test
 	public void DaoMapper() {
 		SqlSession session = sqlSessionFactory.openSession();
-		StudentDao studentDao = session.getMapper(StudentDao.class);
-		Student student = studentDao.findById(1L);
+//		StudentDao studentDao = session.getMapper(StudentDao.class);
+//		Student student = studentDao.findById(1L);
+		TeacherDao teacherDao = session.getMapper(TeacherDao.class);
+		
 		String string = "";
 	}
 }
