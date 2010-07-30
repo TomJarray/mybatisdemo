@@ -4,12 +4,7 @@
 	"http://ibatis.apache.org/dtd/ibatis-3-config.dtd">
 
 <configuration>
-	<plugins>
-		<!-- 指定数据库分页方言Dialect, 其它方言:OracleDialect,SQLServerDialect,SybaseDialect,DB2Dialect,PostgreSQLDialect,MySQLDialect,DerbyDialect,HSQLDialect-->
-		<plugin interceptor="org.springframework.orm.ibatis3.plugin.OffsetLimitInterceptor">
-			<property name="dialectClass" value="org.springframework.orm.ibatis3.plugin.MySQLDialect"/>
-		</plugin>
-	</plugins>
+	
 
 	<typeAliases>
 		<typeAlias type="com.zhongsou.mybatis.dao.bean.Student" alias="Student" />
@@ -24,9 +19,20 @@
 		<typeAlias type="org.apache.ibatis.type.ClobTypeHandler" alias="ClobTypeHandler" />
 	</typeAliases>
 	
+	<plugins>
+		<!-- 指定数据库分页方言Dialect, 其它方言:OracleDialect,SQLServerDialect,SybaseDialect,DB2Dialect,PostgreSQLDialect,MySQLDialect,DerbyDialect,HSQLDialect-->
+		<plugin interceptor="org.springframework.orm.ibatis3.plugin.OffsetLimitInterceptor">
+			<property name="dialectClass" value="org.springframework.orm.ibatis3.plugin.MySQLDialect"/>
+		</plugin>
+	</plugins>
+	
+	
+	
 	<mappers>
 		<mapper resource="com/zhongsou/mybatis/dao/mapper/StudentMapper.xml"/>
 		<mapper resource="com/zhongsou/mybatis/dao/mapper/ScoreMapper.xml"/>
 		<mapper resource="com/zhongsou/mybatis/dao/mapper/LobMapper.xml"/>
 	</mappers>
+	
+	
 </configuration>

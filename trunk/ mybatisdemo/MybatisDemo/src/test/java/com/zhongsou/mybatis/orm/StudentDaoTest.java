@@ -31,11 +31,11 @@ public class StudentDaoTest extends BaseTest{
 	
 	@Test
 	public void findById() {
-		Long id = 5L;
+		Long id = 3L;
 		try
 		{
 			Student student = studentDao.findById(id);
-			Assert.assertEquals("zhangsan", student.getStudent_name());
+			Assert.assertEquals("dddd", student.getStudent_name());
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
