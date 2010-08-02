@@ -1,4 +1,4 @@
-package com.zhongsou.mybatis;
+package org.springframework.orm.ibatis3.plugin;
 
 public class Page {
 	
@@ -54,6 +54,46 @@ public class Page {
 		this.totalCount = totalCount;
 	}
 	
-	
+	public int getOffset()
+    {
+        if(pageNo < 0 || pageSize < 0)
+            return -1;
+        else
+            return (pageNo - 1) * pageSize;
+    }
+
+    public int getTotalPageCount()
+    {
+        int count = totalCount / pageSize;
+        if(totalCount % pageSize > 0)
+            count++;
+        return count;
+    }
+
+    public int getNextPage()
+    {
+        if(hasNextPage())
+            return pageNo + 1;
+        else
+            return pageNo;
+    }
+    
+    public int getPrePage()
+    {
+        if(hasPrePage())
+            return pageNo - 1;
+        else
+            return pageNo;
+    }
+    
+    public boolean hasNextPage()
+    {
+        return pageNo + 1 <= getTotalPageCount();
+    }
+
+    public boolean hasPrePage()
+    {
+        return pageNo - 1 >= 1;
+    }
 	
 }

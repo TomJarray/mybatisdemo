@@ -1,10 +1,17 @@
 package org.springframework.orm.ibatis3.support;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.support.DaoSupport;
 import org.springframework.orm.ibatis3.SqlSessionTemplate;
+import org.springframework.orm.ibatis3.plugin.Page;
+import org.springframework.orm.ibatis3.plugin.PageListHelper;
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.util.Assert;
+
 
 import javax.sql.DataSource;
 
@@ -121,4 +128,26 @@ public abstract class SqlSessionDaoSupport extends DaoSupport {
         this.sessionTemplate.afterPropertiesSet();
     }
     
+    protected String getFullName() {
+    	StackTraceElement stackTraceElement = Thread.currentThread().getStackTrace()[2];
+    	
+    	return stackTraceElement.getClassName() + "." + stackTraceElement.getMethodName();
+    }
+    
+    public int getTotalCount(String statement, Object parameter) {
+    	return PageListHelper.getTotalCount(
+    			this.getSqlSessionFactory().getConfiguration(), 
+    			this.getDataSource(), 
+    			statement, 
+    			parameter);
+    }
+    
+    public List pageList(String statement, Object parameter, Page page) {
+		// get totalCount
+    	page.setTotalCount(getTotalCount(statement, parameter));
+    	// instance RowBounds
+		RowBounds rowBounds = new RowBounds(page.getOffset(), page.getPageSize());
+		// query
+		return this.getSqlSessionTemplate().selectList(statement, parameter, rowBounds);
+    }
 }

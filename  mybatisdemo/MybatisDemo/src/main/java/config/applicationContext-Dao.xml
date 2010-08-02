@@ -29,4 +29,8 @@
 	<property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
 </bean>
 
+<bean id="sampleStudentDao" class="com.zhongsou.mybatis.dao.SampleStudentDao">
+	<property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
+</bean>
+
 </beans>
