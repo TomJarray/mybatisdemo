@@ -4,7 +4,12 @@
 	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 
 <mapper namespace="com.zhongsou.mybatis.dao.PageStudentDao">
+	
+	<sql id="selectColumns"> student_id, student_name
+	</sql>
+	
 	<select id="getStudents" resultType="Student" >
-		select * from student
+		select <include refid="selectColumns"></include> 
+		from student
 	</select>
 </mapper>
