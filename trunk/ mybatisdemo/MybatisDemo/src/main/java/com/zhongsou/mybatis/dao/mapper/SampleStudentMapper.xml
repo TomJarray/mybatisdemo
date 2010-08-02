@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.zhongsou.mybatis.dao.SampleStudentDao">
+	<select id="findById" parameterType="int" resultType="Student" >
+		select * from student where student_id = #{id}
+	</select>
+	
+	<select id="getStudents" resultType="Student" >
+		select * from student
+	</select>
+	
+	<insert id="insert" parameterType="Student">
+		insert into student
+			(student_name, student_age, student_gender)
+		values
+			(#{student_name}, #{student_age}, #{student_gender})
+	</insert>
+	
+	<update id="update" parameterType="Student">
+		update student set
+			student_name = #{student_name},
+			student_age = #{student_age},
+			student_gender = #{student_gender}
+		where student_id = #{student_id}
+	</update>
+	
+	<update id="partialUpdate" parameterType="Student">
+		update student
+		<set>
+			<if test="'student_name' in updatedSet">student_name = #{student_name},</if>
+			<if test="'student_age' in updatedSet">student_age = #{student_age},</if>
+			<if test="'student_gender' in updatedSet">student_gender = #{student_gender}</if>
+		</set>
+		where student_id = #{student_id}
+	</update>
+	
+	<delete id="deleteById" parameterType="int">
+		delete from student where student_id = #{id}
+	</delete>
+	
+	<delete id="delete" parameterType="Student">
+		delete from student where student_id = #{student_id}
+	</delete>
+	
+	<select id="pageList" parameterType="Map" resultType="Student" >
+		select * from student
+		
+	</select>
+	
+	
+	<resultMap id="studentScoresResult" type="Score" >
+		<result property="student.student_id" column="student_id" />
+		
+	</resultMap>
+	
+	<select id="getStudentScores1" resultMap="studentScoresResult" >
+		select
+			score.*,
+			
+			student.student_id as 'student.student_id',
+			student.student_name as 'student.student_name',
+			student.student_age as 'student.student_age',
+			student.student_gender as 'student.student_gender',
+			
+			course.course_id as 'course.course_id',
+			course.course_name as 'course.course_name',
+			course.course_desc as 'course.course_desc',
+			course.course_type as 'course.course_type'
+			
+		from score 
+		inner join student on score.student_id = student.student_id
+		inner join course on score.course_id = course.course_id 
+	</select>
+	
+	<resultMap type="Student" id="studentScores2Result">
+		<result property="student_id" column="student_student_id"/>
+		<result property="student_name" column="student_student_name"/>
+		<result property="student_age" column="student_student_age"/>
+		<result property="student_gender" column="student_student_gender"/>
+		
+		<collection property="scores" ofType="Score">
+			<id property="score_id" column="score_score_id"/>
+			<result property="score" column="score_score"/>
+			
+			<association property="course" column="course_course_id" javaType="Course">
+				<id property="course_id" column="course_course_id"/>
+				<result property="course_name" column="course_course_name"/>
+				<result property="course_desc" column="course_course_desc"/>
+				<result property="course_type" column="course_course_type"/>
+			</association>
+		</collection>
+	</resultMap>
+	<select id="getStudentScores2" resultMap="studentScores2Result" >
+		select
+			student.student_id as 'student_student_id',
+			student.student_name as 'student_student_name',
+			student.student_age as 'student_student_age',
+			student.student_gender as 'student_student_gender',
+			
+			score.score_id as 'score_score_id',
+			score.score as 'score_score',
+			
+			course.course_id as 'course_course_id',
+			course.course_name as 'course_course_name',
+			course.course_desc as 'course_course_desc',
+			course.course_type as 'course_course_type'
+			
+		from score 
+		inner join student on score.student_id = student.student_id
+		inner join course on score.course_id = course.course_id 
+	</select>
+	
+	<resultMap type="StudentInfo" id="studentScores3Result">
+		<result property="student_id" column="student_student_id"/>
+		<result property="student_name" column="student_student_name"/>
+		<result property="student_age" column="student_student_age"/>
+		<result property="student_gender" column="student_student_gender"/>
+		<result property="totalScore" column="student_totalScore"/>
+		
+		<collection property="scores" ofType="Score">
+			<id property="score_id" column="score_score_id"/>
+			<result property="score" column="score_score"/>
+			
+			<association property="course" column="course_course_id" javaType="Course">
+				<id property="course_id" column="course_course_id"/>
+				<result property="course_name" column="course_course_name"/>
+				<result property="course_desc" column="course_course_desc"/>
+				<result property="course_type" column="course_course_type"/>
+			</association>
+		</collection>
+	</resultMap>
+	<select id="getStudentScores3" resultMap="studentScores3Result" >
+		select
+			student.student_id as 'student_student_id',
+			student.student_name as 'student_student_name',
+			student.student_age as 'student_student_age',
+			student.student_gender as 'student_student_gender',
+			(select sum(score.score) from score where score.student_id = student.student_id) as 'student_totalScore',
+			
+			score.score_id as 'score_score_id',
+			score.score as 'score_score',
+			
+			course.course_id as 'course_course_id',
+			course.course_name as 'course_course_name',
+			course.course_desc as 'course_course_desc',
+			course.course_type as 'course_course_type'
+			
+		from score 
+		inner join student on score.student_id = student.student_id
+		inner join course on score.course_id = course.course_id 
+	</select>
+</mapper>

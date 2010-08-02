@@ -16,10 +16,10 @@ import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.transaction.jdbc.JdbcTransaction;
 import org.apache.ibatis.type.TypeHandlerRegistry;
+import org.springframework.orm.ibatis3.plugin.Page;
 import org.springframework.orm.ibatis3.plugin.OffsetLimitInterceptor.BoundSqlSqlSource;
 import org.springframework.orm.ibatis3.support.SqlSessionDaoSupport;
 
-import com.zhongsou.mybatis.Page;
 import com.zhongsou.mybatis.dao.bean.Student;
 
 
