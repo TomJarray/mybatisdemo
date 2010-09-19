@@ -135,16 +135,14 @@ public abstract class SqlSessionDaoSupport extends DaoSupport {
     }
     
     public int getTotalCount(String statement, Object parameter) {
-    	return PageListHelper.getTotalCount(
-    			this.getSqlSessionFactory().getConfiguration(), 
-    			this.getDataSource(), 
-    			statement, 
-    			parameter);
+    	List s = sessionTemplate.selectList(statement, parameter);
+    	return s.size();
     }
     
     public List pageList(String statement, Object parameter, Page page) {
 		// get totalCount
-    	page.setTotalCount(getTotalCount(statement, parameter));
+    	if(page.getTotalCount() == -1)
+    		page.setTotalCount(getTotalCount(statement, parameter));
     	// instance RowBounds
 		RowBounds rowBounds = new RowBounds(page.getOffset(), page.getPageSize());
 		// query
